@@ -1,11 +1,14 @@
-name: Test run
+name: test run
 
 on:
-    push:
+    push: 
+    workflow_dispatch:
+   
 
 jobs:
     running:
         # name: walk
         runs-on: ubuntu-latest
         steps:
+            - run: echo "job started"
             - run: echo "hello world"
