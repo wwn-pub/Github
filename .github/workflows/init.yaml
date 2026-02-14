@@ -18,3 +18,6 @@ jobs:
         steps:
             - run: echo "job started"
             - run: echo "hello world evryone"
+            - uses: actions/checkout@v6
+              
+            
