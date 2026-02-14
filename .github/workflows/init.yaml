@@ -10,8 +10,10 @@ jobs:
         # name: walk
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v6
             - run: echo "job started"
             - run:  python3 app.py
+
     walking:
         needs: running
         runs-on: ubuntu-latest
