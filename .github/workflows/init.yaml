@@ -12,3 +12,9 @@ jobs:
         steps:
             - run: echo "job started"
             - run: echo "hello world"
+    walking:
+        # name: walk
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "job started"
+            - run: echo "hello world"
