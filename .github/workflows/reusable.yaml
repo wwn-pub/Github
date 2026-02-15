@@ -1,0 +1,9 @@
+name: checking test
+on: push
+
+jobs:
+  run:
+    name: Run
+    uses: ./.github/workflows/init.yaml
+        
+    
