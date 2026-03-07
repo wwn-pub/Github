@@ -1,0 +1,34 @@
+# Ignore Python bytecode files
+Readme
+Dockerfile
+.venv/
+command to to execute inside the container : docker exec -it <container_id> bash
+docker exec <container_id> ps -eaf : list all processes running inside the container
+
+To get the full container ID, use:docker ps -a --no-trunc
+
+map a volume to the container so that the data stored by the container is stored at /opt/data on the host.
+
+Use the same name : mysql-db and same password: db_pass123 as before. Mysql stores data at /var/lib/mysql inside the container.
+docker run -v /opt/data:/var/lib/mysql -d --name mysql-db -e MYSQL_ROOT_PASSWORD=db_pass123 mysql
+docker system df -v : to see actual disc space used by the container and its images for more details -v flag is used to show more detailed information about the disk usage of Docker objects, including containers, images, and volumes. It provides a breakdown of the space used by each object, allowing you to identify which ones are taking up the most space.
+docker system prune -a: to remove all unused containers, images, and networks. Use with caution as it will delete all unused resources.
+
+docker network: Run the command: docker network create --driver bridge --subnet 182.18.0.0/24 --gateway 182.18.0.1 wp-mysql-network
+
+Inspect the created network by docker network inspect wp-mysql-network
+
+Run the command: docker run -d -e MYSQL_ROOT_PASSWORD=db_pass123 --name mysql-db --network wp-mysql-network mysql:5.7
+
+Q:Deploy a web application named webapp using the kodekloud/simple-webapp-mysql image.
+
+Expose the container’s port 8080 to port 38080 on the host.
+
+The application makes use of two environment variable:
+1: DB_Host with the value mysql-db.
+2: DB_Password with the value db_pass123.
+Make sure to attach it to the newly created network called wp-mysql-network.
+
+Also make sure to link the MySQL and the webapp container.
+
+Run the command: docker run --network=wp-mysql-network -e DB_Host=mysql-db -e DB_Password=db_pass123 -p 38080:8080 --name webapp --link mysql-db:mysql-db -d kodekloud/simple-webapp-mysql

@@ -1,0 +1,7 @@
+Whenever you come back to work on this project later, you just need to remember these two steps:
+
+Activate: source .venv/bin/activate
+
+Run: python app.py
+
+Note: When you are done working, you can type deactivate to leave the virtual environment
