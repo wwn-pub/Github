@@ -1,5 +1,4 @@
 name: Docker Build and Push to ECR
-id token
 on:
   push:
     branches:
