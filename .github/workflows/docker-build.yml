@@ -35,8 +35,9 @@ jobs:
           IMAGE_TAG: latest
         run: |
           # Build the Docker image
-          docker build -f ./python/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           
           # Push the Docker image to ECR
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        working-directory: ./python
       # ... rest of your build and push steps
