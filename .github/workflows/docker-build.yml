@@ -40,4 +40,4 @@ jobs:
           # Push the Docker image to ECR
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         working-directory: ./python
-      # ... rest of your build and push steps
+     
