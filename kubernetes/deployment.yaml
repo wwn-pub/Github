@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-webapp
+  labels:
+    app: web
+spec:
+  replicas: 1          # Tells K8s to run 1 copies of your app
+  selector:
+    matchLabels:
+      app: web         # Tells the deployment which pods to manage
+  template:            # This section defines the Pods themselves
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:1.25
+        ports:
+        - containerPort: 80
